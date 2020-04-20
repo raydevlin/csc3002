@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="Container_Root" prefHeight="690.0" prefWidth="676.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.ui.ServerViewController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="676.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Button fx:id="Server_Stop" disable="true" layoutX="371.0" layoutY="426.0" mnemonicParsing="false" onAction="#test_sendRequest" prefHeight="25.0" prefWidth="124.0" text="Stop Server" />
+            <Button fx:id="Server_Start" layoutX="503.0" layoutY="426.0" mnemonicParsing="false" onAction="#startServer" prefHeight="25.0" prefWidth="124.0" text="Start Server" />
+            <Label layoutX="249.0" layoutY="15.0" text="Game of Life Server" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <HBox layoutX="153.0" layoutY="51.0" prefHeight="17.0" prefWidth="383.0">
+               <children>
+                  <HBox prefHeight="17.0" prefWidth="190.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="91.0" text="Local Address">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Server_LocalAddress" prefHeight="17.0" prefWidth="87.0" text="999.999.999.999" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="17.0" prefWidth="191.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="102.0" text="Public Address">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Server_PublicAddress" text="999.999.999.999" visible="false" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <AnchorPane fx:id="Container_ServerProperties" layoutX="35.0" layoutY="84.0" prefHeight="163.0" prefWidth="315.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="68.0" prefHeight="17.0" prefWidth="108.0" text="Client Net Width" />
+                  <TextField fx:id="Server_NetworkWidth" layoutX="114.0" layoutY="64.0" prefHeight="25.0" prefWidth="45.0" text="2" />
+                  <Label alignment="CENTER_RIGHT" layoutX="171.0" layoutY="68.0" prefHeight="17.0" prefWidth="92.0" text="Client Net Height" />
+                  <Label layoutX="8.0" layoutY="98.0" prefHeight="17.0" prefWidth="108.0" text="Connction Type" />
+                  <ComboBox fx:id="Server_ConnectionType" layoutX="114.0" layoutY="94.0" prefHeight="25.0" prefWidth="200.0" />
+                  <Label layoutX="8.0" layoutY="38.0" prefHeight="17.0" prefWidth="108.0" text="Server Name" />
+                  <TextField fx:id="Server_Name" layoutX="114.0" layoutY="34.0" prefHeight="25.0" prefWidth="200.0" text="game-of-life-server" />
+                  <TextField fx:id="Server_NetworkHeight" layoutX="269.0" layoutY="64.0" prefHeight="25.0" prefWidth="45.0" text="2" />
+                  <Label layoutX="7.0" layoutY="11.0" prefHeight="17.0" prefWidth="115.0" text="Server Properties">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="Container_ClientProperties" layoutX="361.0" layoutY="84.0" prefHeight="189.0" prefWidth="315.0">
+               <children>
+                  <Label layoutX="22.0" layoutY="11.0" prefHeight="17.0" prefWidth="102.0" text="Client Properties">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="22.0" layoutY="38.0" prefHeight="17.0" prefWidth="102.0" text="Device Dimensions" />
+                  <TextField fx:id="Client_Width" layoutX="141.0" layoutY="34.0" prefHeight="25.0" prefWidth="53.0" promptText="width" text="128" />
+                  <Label alignment="CENTER_RIGHT" layoutX="198.0" layoutY="38.0" prefHeight="17.0" prefWidth="8.0" text="x" />
+                  <TextField fx:id="Client_Height" layoutX="210.0" layoutY="34.0" prefHeight="25.0" prefWidth="53.0" promptText="height" text="72" />
+                  <CheckBox fx:id="Client_GetConfigFromServer" layoutX="247.0" layoutY="98.0" mnemonicParsing="false" onAction="#checkDataSource" prefHeight="17.0" prefWidth="12.0" selected="true" />
+                  <Label fx:id="Client_DataSourceTitle" layoutX="22.0" layoutY="128.0" prefHeight="17.0" prefWidth="72.0" text="Data Source:" />
+                  <Label fx:id="Client_DataSource" alignment="CENTER_RIGHT" layoutX="102.0" layoutY="128.0" prefHeight="17.0" prefWidth="144.0" text="default.png" />
+                  <Label layoutX="22.0" layoutY="68.0" prefHeight="17.0" prefWidth="102.0" text="Edge Logic" />
+                  <ComboBox fx:id="Client_EdgeLogic" layoutX="141.0" layoutY="64.0" prefHeight="25.0" prefWidth="123.0" />
+                  <Label layoutX="22.0" layoutY="98.0" prefHeight="17.0" prefWidth="225.0" text="Get Initial Generation From Server" />
+                  <Label fx:id="Server_UploadDataSource" layoutX="249.0" layoutY="128.0" onMouseClicked="#loadData" text="📤" textFill="#0095c8">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="Container_GameProperties" layoutX="35.0" layoutY="268.0" prefHeight="129.0" prefWidth="613.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="40.0" prefHeight="17.0" prefWidth="72.0" text="Generations" />
+                  <TextField fx:id="Game_Generations" layoutX="126.0" layoutY="36.0" prefHeight="25.0" prefWidth="71.0" promptText="No. of Generations" text="1000" />
+                  <Label layoutX="8.0" layoutY="70.0" prefHeight="17.0" prefWidth="96.0" text="Update Time (ms)" />
+                  <TextField fx:id="Game_UpdatesPerSecond" layoutX="126.0" layoutY="66.0" prefHeight="25.0" prefWidth="71.0" promptText="Time Between Updates" text="250" />
+                  <Label layoutX="7.0" layoutY="10.0" prefHeight="17.0" prefWidth="102.0" text="Game Properties">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="204.0" layoutY="40.0" prefHeight="17.0" prefWidth="90.0" text="Overpopulation" />
+                  <TextField fx:id="Game_Overpopulation" disable="true" layoutX="321.0" layoutY="36.0" prefHeight="25.0" prefWidth="71.0" promptText="Overpopulation" text="4" />
+                  <Label layoutX="204.0" layoutY="70.0" prefHeight="17.0" prefWidth="96.0" text="Underpopulation" />
+                  <TextField fx:id="Game_Underpopulation" disable="true" layoutX="321.0" layoutY="66.0" prefHeight="25.0" prefWidth="71.0" promptText="Underpopulation" text="1" />
+                  <Label layoutX="404.0" layoutY="40.0" prefHeight="17.0" prefWidth="72.0" text="Reproduction" />
+                  <TextField fx:id="Game_Reproduction" disable="true" layoutX="521.0" layoutY="36.0" prefHeight="25.0" prefWidth="71.0" promptText="Reproduction" text="3" />
+                  <Label layoutX="404.0" layoutY="70.0" prefHeight="17.0" prefWidth="96.0" text="Detection Radius" />
+                  <TextField fx:id="Game_DetectionRadius" disable="true" layoutX="521.0" layoutY="66.0" prefHeight="25.0" prefWidth="71.0" promptText="Detection Radius" text="1" />
+                  <CheckBox fx:id="Game_AllowCustomGameVariables" layoutX="576.0" layoutY="106.0" mnemonicParsing="false" onAction="#doCustomGameVariables" prefHeight="17.0" prefWidth="12.0" />
+                  <Label layoutX="384.0" layoutY="106.0" prefHeight="17.0" prefWidth="162.0" text="Allow Custom Game Variables" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="Container_ServerStatus" disable="true" layoutX="35.0" layoutY="481.0" prefHeight="235.0" prefWidth="617.0">
+               <children>
+                  <Label layoutX="7.0" layoutY="11.0" prefHeight="17.0" prefWidth="102.0" text="Server Status">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="8.0" layoutY="33.0" prefHeight="17.0" prefWidth="72.0" text="Availablility" />
+                  <Label fx:id="Status_Availability" layoutX="100.0" layoutY="33.0" prefHeight="17.0" prefWidth="105.0" text="Inactive" />
+                  <Circle fx:id="Status_Availability_Flag" fill="#aeaeae" layoutX="90.0" layoutY="42.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Label layoutX="193.0" layoutY="33.0" prefHeight="17.0" prefWidth="122.0" text="Connected Devices" />
+                        <Label fx:id="Status_Devices" layoutX="314.0" layoutY="33.0" text="0" />
+                  <Label fx:id="Status_DevicesSlash" layoutX="325.0" layoutY="32.0" text="/" />
+                  <Label fx:id="Status_DevicesLimit" layoutX="334.0" layoutY="33.0" text="0" />
+                  <TextArea fx:id="Status_Log" editable="false" layoutX="8.0" layoutY="77.0" prefHeight="107.0" prefWidth="588.0" />
+                  <Label layoutX="8.0" layoutY="59.0" prefHeight="17.0" prefWidth="72.0" text="Server Logs" />
+                  <Button fx:id="Status_ManageConnections" layoutX="316.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="144.0" text="Manage Connections" />
+                  <Button fx:id="Status_ManualConnect" layoutX="468.0" layoutY="196.0" mnemonicParsing="false" onAction="#openManualConnect" prefHeight="25.0" prefWidth="124.0" text="Manual Connect" />
+                  <Button fx:id="Properties_ConfigureDisplays" layoutX="164.0" layoutY="196.0" mnemonicParsing="false" onAction="#configureDisplays" prefHeight="25.0" prefWidth="144.0" text="Configure Devices" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="Server_SaveConfig" layoutX="41.0" layoutY="15.0" onMouseClicked="#saveConfig" text="💾" textFill="#0095c8">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="Server_LoadConfig" layoutX="68.0" layoutY="13.0" onMouseClicked="#loadConfig" text="📂" textFill="#0095c8">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <ImageView fx:id="Server_LoadWheel" fitHeight="16.0" fitWidth="21.0" layoutX="460.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/load-wheel.gif" />
+               </image>
+            </ImageView>
+            <Button fx:id="Server_StartTest" layoutX="237.0" layoutY="426.0" mnemonicParsing="false" onAction="#test_start" prefHeight="25.0" prefWidth="124.0" text="Start Test" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

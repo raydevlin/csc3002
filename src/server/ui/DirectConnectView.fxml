@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="252.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.ui.DirectConnectController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="405.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="139.0" layoutY="14.0" style="&#10;" text="Direct Connect" textAlignment="CENTER" wrapText="false">
+          <font>
+            <Font name="System Bold" size="18.0" />
+          </font>
+        </Label>
+            <AnchorPane fx:id="DirectConnect_InputAnchorPane" layoutX="38.0" layoutY="71.0" prefHeight="119.0" prefWidth="329.0">
+               <children>
+                  <TextField fx:id="DirectConnect_IpAddress" layoutX="72.0" layoutY="10.0" prefHeight="25.0" prefWidth="250.0" promptText="0.0.0.0" />
+                  <TextArea fx:id="DirectConnect_Message" layoutX="72.0" layoutY="41.0" prefHeight="72.0" prefWidth="250.0" promptText="Will be displayed to the client that is being connected" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="14.0" style="&#10;" text="IP Address" textAlignment="CENTER" wrapText="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="41.0" style="&#10;" text="Message" textAlignment="CENTER" wrapText="false">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Label fx:id="DirectConnect_SuccessMessage" layoutX="105.0" layoutY="108.0" text="Client has been connected to server" visible="false" />
+            <Button fx:id="DirectConnect_ConnectButton" layoutX="271.0" layoutY="195.0" mnemonicParsing="false" onAction="#tryConnect" prefHeight="25.0" prefWidth="90.0" text="Connect" />
+            <CheckBox fx:id="DirectConnect_DoRememberMessage" layoutX="109.0" layoutY="199.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="132.0" text="Remember Message" />
+            <Label fx:id="DirectConnect_SuccessHeader" layoutX="175.0" layoutY="89.0" text="Success!" textFill="#00a408" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="DirectConnect_Description" layoutX="42.0" layoutY="47.0" text="Connect server to an open Game of Life client via IP Address" />
+            <Rectangle fx:id="DirectConnect_InteractionGuard" arcHeight="5.0" arcWidth="5.0" fill="#9c9c9c4e" height="169.0" layoutX="34.0" layoutY="68.0" stroke="#ffffff00" strokeType="INSIDE" visible="false" width="344.0" />
+            <ImageView fx:id="DirectConnect_LoadingWheel" fitHeight="80.0" fitWidth="73.0" layoutX="165.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@img/load-wheel.gif" />
+               </image>
+            </ImageView>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
